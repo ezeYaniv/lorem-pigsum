@@ -1,0 +1,56 @@
+//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
+$color-primary: #D32929;
+$color-primary-dark: #7F2122;
+$color-secondary: #FACD1E;
+$color-tertiary-light: #FFF5E6;
+$color-tertiary-mid: #E5DBB7;
+$color-tertiary-dark: #CAC198;
+$color-shadow: black;
+
+//~~~~~~~~~~~~~~~~~~~~~~ MEDIA QUERIES ~~~~~~~~~~~~~~~~~~~~~~
+$laptop: 992px;
+$tablet: 768px;
+$phone: 600px;
+
+//~~~~~~~~~~~~~~~~~~~~~~ GLOBAL & UTILITY CLASSES ~~~~~~~~~~~~~~~~~~~~~~
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit; }
+
+  html {
+    /* this defines what 1rem is */
+    font-size: 62.5%;
+    /* 1 rem = 10 px, 10/16px = 62.5% */
+  }
+
+  body {
+      box-sizing: border-box;
+      background-color: $color-tertiary-mid;
+  }
+
+  .content-wrapper {
+    background-color: $color-tertiary-light;
+    width: 60%;
+    padding: 0 4rem;
+    margin: 0 auto;
+  }
+//~~~~~~~~~~~~~~~~~~~~~~ TYPOGRAPHY ~~~~~~~~~~~~~~~~~~~~~~
+body{
+    font-family: 'Times New Roman', serif;
+    font-size: 1.6rem;
+}
+
+h1{
+    font-size: 3rem;
+}
+//~~~~~~~~~~~~~~~~~~~~~~ INTRO SECTION ~~~~~~~~~~~~~~~~~~~~~~
+.section-intro {
+
+}
+//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
+
