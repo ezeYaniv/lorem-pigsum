@@ -1,0 +1,46 @@
+<%- include ("./partials/header") -%>
+
+      <div class="section-intro">
+        <p class="intro__text--definition">
+          <a href="" class="intro__link"><i class="fas fa-info-circle">&nbsp;</i>What is pig latin?</a>
+        </p>
+        <p class="intro__text--test">Test your pig latin!</p>
+        <form action="" method="post">
+          <button onclick="">Convert this page</button>
+        </form>
+      </div>
+      <div class="section-generate">
+        <form action="/" method="post">
+          <div class="paragraphs">
+            <label for="paragraphs" class="paragraphs__description">Number of paragraphs:</label>
+            <br>
+            <div class="paragraphs__inputs">
+              <button type="button" class="paragraphs__button paragraphs__button--decrement" id="button--decrement">-</button>
+              <input type="number" value="<%= paragraphs %>" min="1" max="99" class="paragraphs__number" id="paragraphs" name="paragraphs" required>
+              <button type="button" class="paragraphs__button paragraphs__button--increment" id="button--increment">+</button>
+            </div>
+          </div>
+          <div class="options-length">
+            <p class="options-length--description">Paragraph length:</p>
+            <input class="radio-button" type="radio" value="short" name="length" id="length-short" <%= length == "short" ? "checked" : "" %> />
+            <label class="radio-label" for="length-short">Short</label>
+            <input class="radio-button" type="radio" value="medium" name="length" id="length-medium" <%= length == "medium" ? "checked" : "" %> />
+            <label class="radio-label" for="length-medium">Medium</label>
+            <input class="radio-button" type="radio" value="long" name="length" id="length-long" <%= length == "long" ? "checked" : "" %> />
+            <label class="radio-label" for="length-long">Long</label>
+          </div>
+          <button class="generate-button" type="submit" onclick="generate()">Generate Pigsum</button>
+        </form>
+      </div>
+      <div class="section-results">
+        <div class="results__container" id="results__container">
+          <% if(pigText && pigText.length) { %>
+            <% pigText.forEach((paragraph, key, array) => { %>
+              <p class="results__paragraph"><%= paragraph %></p>
+            <% }) %>
+          <% } %>
+        </div>
+        <button class="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+      </div>
+      
+<%- include("partials/footer") %>

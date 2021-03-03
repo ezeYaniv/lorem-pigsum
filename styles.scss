@@ -1,11 +1,14 @@
 //~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
-$color-primary: #D32929;
-$color-primary-dark: #7F2122;
-$color-secondary: #FACD1E;
-$color-tertiary-light: #FFF5E6;
-$color-tertiary-mid: #E5DBB7;
-$color-tertiary-dark: #CAC198;
+$color-primary: #d32929;
+$color-primary-dark: #7f2122;
+$color-secondary: #facd1e;
+$color-tertiary-light: #fff5e6;
+$color-tertiary-mid: #e5dbb7;
+$color-tertiary-dark: #cac198;
+$color-tertiary-text: #645b0b;
 $color-shadow: black;
+
+$margin-section: 3rem;
 
 //~~~~~~~~~~~~~~~~~~~~~~ MEDIA QUERIES ~~~~~~~~~~~~~~~~~~~~~~
 $laptop: 992px;
@@ -18,39 +21,184 @@ $phone: 600px;
 *::after {
   margin: 0;
   padding: 0;
-  box-sizing: inherit; }
+  box-sizing: inherit;
+}
 
-  html {
-    /* this defines what 1rem is */
-    font-size: 62.5%;
-    /* 1 rem = 10 px, 10/16px = 62.5% */
-  }
+html {
+  /* this defines what 1rem is */
+  font-size: 62.5%;
+  /* 1 rem = 10 px, 10/16px = 62.5% */
+}
 
-  body {
-      box-sizing: border-box;
-      background-color: $color-tertiary-mid;
-  }
+body {
+  box-sizing: border-box;
+  background-color: $color-tertiary-mid;
+  text-align: center;
+}
 
-  .content-wrapper {
-    background-color: $color-tertiary-light;
-    width: 60%;
-    padding: 0 4rem;
-    margin: 0 auto;
-  }
+.content-wrapper {
+  // background-color: $color-tertiary-light;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin: 0 auto;
+}
 //~~~~~~~~~~~~~~~~~~~~~~ TYPOGRAPHY ~~~~~~~~~~~~~~~~~~~~~~
-body{
-    font-family: 'Times New Roman', serif;
-    font-size: 1.6rem;
+body {
+  font-family: "trajan-pro-3", "Goudy Old Style", "Times New Roman", serif;
+  font-size: 1.7rem;
+  color: $color-tertiary-text;
+  background-color: #f5e2bc;
+  background-image: url("https://www.transparenttextures.com/patterns/dimension.png");
 }
 
-h1{
-    font-size: 3rem;
+h1 {
+  font-size: 5rem;
+  font-family: "Caesar Dressing";
+  color: $color-primary-dark;
+  letter-spacing: 0.2rem;
+
+  @media (min-width: $phone) {
+    letter-spacing: 0.3rem;
+    font-size: 5.5rem;
+  }
+
+  @media (min-width: $tablet) {
+    font-size: 6rem;
+  }
 }
+
+//~~~~~~~~~~~~~~~~~~~~~~ HEADER ~~~~~~~~~~~~~~~~~~~~~~
+.header {
+  text-align: center;
+  margin-bottom: $margin-section;
+
+  &__logo {
+    text-decoration: none;
+  }
+
+  &__text {
+    &--subtitle {
+      font-size: 2.2rem;
+    }
+  }
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~ INTRO SECTION ~~~~~~~~~~~~~~~~~~~~~~
 .section-intro {
+  margin-bottom: $margin-section;
+  // text-align: left;
 
 }
-//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
-//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
-//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~
 
+
+.intro {
+  &__text {
+    &--definition {
+      display: inline-block;
+      text-decoration: underline;
+      font-size: 1.6rem;
+    }
+  }
+  &__link {
+    &:link,
+    &:visited {
+      color: $color-tertiary-text;
+    }
+
+  }
+}
+
+button {
+  color: $color-tertiary-text;
+  background-color: $color-secondary;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid $color-tertiary-dark;
+  border-radius: 3px;
+  cursor: pointer;
+
+}
+//~~~~~~~~~~~~~~~~~~~~~~ FORM SECTION ~~~~~~~~~~~~~~~~~~~~~~
+.section-generate {
+  margin-bottom: $margin-section;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+.paragraphs {
+  margin-bottom: 1rem;
+  
+  &__inputs {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__number {
+    height: 3rem;
+    text-align: center;
+    width: 7rem;
+    margin-right: 0.7rem;
+    background-color: $color-tertiary-light;
+    border: 1px solid $color-tertiary-dark;
+    border-radius: 3px;
+    font-size: inherit;
+    color: $color-tertiary-text;
+  }
+  &__button {
+    width: 3rem;
+    height: 3rem;
+    margin-right: 0.7rem;
+  }
+}
+
+.options-length {
+  margin-bottom: 2rem;
+}
+
+.radio-button {
+  display: none;
+  &:checked + .radio-label {
+    background-color: $color-secondary;
+  }
+}
+.radio-label {
+  padding: 0.2rem 0.5rem;
+  background-color: $color-tertiary-light;
+  cursor: pointer;
+  border: 1px solid $color-tertiary-dark;
+  border-radius: 3px;
+
+  &:not(:last-child) {
+    margin-right: 0.7rem;
+  }
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~ RESULTS SECTION ~~~~~~~~~~~~~~~~~~~~~~
+.results {
+  &__container {
+    background-color: $color-tertiary-light;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 3px;
+    border: 1px solid $color-tertiary-dark;
+    min-height: 150px;
+    max-height: 400px;
+    overflow-y: scroll;
+    margin-bottom: 2rem;
+  }
+
+  &__paragraph {
+    font-family: "Quattrocento";
+    font-size: 1.6rem;
+    &:not(:last-child) {
+      margin-bottom: 1.5rem;
+    }
+  }
+}
+//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~

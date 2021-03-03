@@ -5,25 +5,43 @@ const https = require("https");
 const bodyParser = require("body-parser");
 const request = require("request");
 const ejs = require("ejs");
-const pigify = require("./pigify.js");
+const pigify = require("./public/scripts/pigify.js");
 
 const app = express();
 
-app.use(express.static("public"));
+app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.set("view engine", "ejs");
 app.set("views", __dirname + "/views");
 
+// global variable declarations
+let pigText = [];
+let paragraphs = 3;
+let length = "medium";
+
 app.get("/", function (req, res) {
-  https.get("https://loripsum.net/api/4/short/plaintext", (response) => {
+  res.render("index", { pigText: pigText, paragraphs: paragraphs, length: length });
+});
+
+app.post("/", function (req, res) {
+  // console.log(req.body);
+  paragraphs = req.body.paragraphs;
+  length = req.body.length;
+
+  const url = "https://loripsum.net/api/" + paragraphs + "/" + length + "/plaintext";
+
+  https.get(url, (response) => {
+    // console.log(response);
     response.setEncoding("utf8");
-    response.on("data", (data) => {
-      // var text = JSON.parse(data);
-      pigify(data);
+    let data='';
+    response.on("data", chunk => {
+      data += chunk;
+    });
+    response.on("end", () => {
+      pigText = pigify(data);
+      res.redirect("/");
     });
   });
-
-  res.render("home");
 });
 
 let port = process.env.PORT;
