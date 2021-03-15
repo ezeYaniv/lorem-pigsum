@@ -20,12 +20,41 @@ body {
 
 .content-wrapper {
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   margin: 0 auto;
 }
 
+@media only screen and (min-width: 768px) {
+  .content-wrapper {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 992px) {
+  .content-wrapper {
+    width: 70%;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .content-wrapper {
+    width: 60%;
+  }
+}
+
+.btn {
+  color: #645b0b;
+  background-color: #facd1e;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid #cac198;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 body {
-  font-family: "trajan-pro-3", "Goudy Old Style", "Times New Roman", serif;
+  font-family: 'trajan-pro-3', 'Goudy Old Style', 'Times New Roman', serif;
   font-size: 1.7rem;
   color: #645b0b;
   background-color: #f5e2bc;
@@ -34,19 +63,19 @@ body {
 
 h1 {
   font-size: 5rem;
-  font-family: "Caesar Dressing";
+  font-family: 'Caesar Dressing';
   color: #7f2122;
   letter-spacing: 0.2rem;
 }
 
-@media (min-width: 600px) {
+@media only screen and (min-width: 600px) {
   h1 {
     letter-spacing: 0.3rem;
     font-size: 5.5rem;
   }
 }
 
-@media (min-width: 768px) {
+@media only screen and (min-width: 768px) {
   h1 {
     font-size: 6rem;
   }
@@ -69,33 +98,162 @@ h1 {
   margin-bottom: 3rem;
 }
 
-.intro__text--definition {
+.scroll-wrapper {
+  transform: translate(0, 0) scale(0.8);
+  transition: all 0.2s ease-in-out;
   display: inline-block;
-  text-decoration: underline;
-  font-size: 1.6rem;
 }
 
-.intro__link:link, .intro__link:visited {
-  color: #645b0b;
+.scroll-wrapper--show {
+  z-index: 2000;
+  position: relative;
+  transform: translate(0, 0) scale(1);
+  transition: all 0.5s ease-in-out;
 }
 
-button {
+.scroll {
+  background: center/cover url("images/Trimmed Scroll.png") no-repeat;
+  height: 3rem;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  transform: scale(1.2);
+}
+
+.scroll__link {
+  text-align: left;
+  margin-left: 5rem;
+  margin-right: 5rem;
   color: #645b0b;
-  background-color: #facd1e;
   font-family: inherit;
-  font-size: inherit;
+  font-size: 1.5rem;
   padding: 0.2rem 0.7rem;
   border: 1px solid #cac198;
   border-radius: 3px;
   cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.scroll__link:link, .scroll__link:visited {
+  color: #645b0b;
+}
+
+.scroll__text {
+  display: inline-block;
+  padding: 2rem;
+  background-color: beige;
+  font-family: 'Quattrocento', serif;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+  font-size: 1.7rem;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.scroll__text ol {
+  margin-left: 2rem;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.overlay--show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#scroll__close {
+  float: right;
+}
+
+.popup__link {
+  margin-bottom: 1rem;
+}
+
+.popup__text {
+  text-align: left;
+}
+
+.popup__text ol {
+  list-style-position: inside;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup--show ~ .overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.overlay--show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+  z-index: 2000;
+  visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.popup--show {
+  visibility: visible;
+}
+
+.popup__content {
+  padding: 2rem;
+  background-color: beige;
+  font-family: 'Quattrocento', serif;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all 0.1s;
+  backface-visibility: hidden;
+}
+
+#popup__close {
+  float: right;
 }
 
 .section-generate {
   margin-bottom: 3rem;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
@@ -165,7 +323,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .results__paragraph {
-  font-family: "Quattrocento";
+  font-family: 'Quattrocento', serif;
   font-size: 1.6rem;
 }
 

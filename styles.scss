@@ -10,10 +10,32 @@ $color-shadow: black;
 
 $margin-section: 3rem;
 
-//~~~~~~~~~~~~~~~~~~~~~~ MEDIA QUERIES ~~~~~~~~~~~~~~~~~~~~~~
+//~~~~~~~~~~~~~~~~~~~~~~ MEDIA QUERIES & MIXINS ~~~~~~~~~~~~~~~~~~~~~~
+$laptop-large: 1200px;
 $laptop: 992px;
 $tablet: 768px;
 $phone: 600px;
+
+@mixin phone {
+  @media only screen and (min-width: #{$phone}) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: #{$tablet}) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: #{$laptop}) {
+    @content;
+  }
+}
+@mixin laptop-large {
+  @media only screen and (min-width: #{$laptop-large}) {
+    @content;
+  }
+}
 
 //~~~~~~~~~~~~~~~~~~~~~~ GLOBAL & UTILITY CLASSES ~~~~~~~~~~~~~~~~~~~~~~
 *,
@@ -39,30 +61,52 @@ body {
 .content-wrapper {
   // background-color: $color-tertiary-light;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   margin: 0 auto;
+
+  @include tablet {
+    width: 80%;
+  }
+  @include laptop {
+    width: 70%;
+  }
+  @include laptop-large {
+    width: 60%;
+  }
 }
+
+.btn {
+  color: $color-tertiary-text;
+  background-color: $color-secondary;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0.2rem 0.7rem;
+  border: 1px solid $color-tertiary-dark;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~ TYPOGRAPHY ~~~~~~~~~~~~~~~~~~~~~~
 body {
-  font-family: "trajan-pro-3", "Goudy Old Style", "Times New Roman", serif;
+  font-family: 'trajan-pro-3', 'Goudy Old Style', 'Times New Roman', serif;
   font-size: 1.7rem;
   color: $color-tertiary-text;
   background-color: #f5e2bc;
-  background-image: url("https://www.transparenttextures.com/patterns/dimension.png");
+  background-image: url('https://www.transparenttextures.com/patterns/dimension.png');
 }
 
 h1 {
   font-size: 5rem;
-  font-family: "Caesar Dressing";
+  font-family: 'Caesar Dressing';
   color: $color-primary-dark;
   letter-spacing: 0.2rem;
 
-  @media (min-width: $phone) {
+  @include phone {
     letter-spacing: 0.3rem;
     font-size: 5.5rem;
   }
 
-  @media (min-width: $tablet) {
+  @include tablet {
     font-size: 6rem;
   }
 }
@@ -86,53 +130,196 @@ h1 {
 //~~~~~~~~~~~~~~~~~~~~~~ INTRO SECTION ~~~~~~~~~~~~~~~~~~~~~~
 .section-intro {
   margin-bottom: $margin-section;
-  // text-align: left;
-
+  // display: flex;
+  // justify-content: center;
 }
 
+.scroll-wrapper {
+  transform: translate(0, 0) scale(0.8);
+  transition: all 0.2s ease-in-out;
+  display: inline-block;
+}
+.scroll-wrapper--show {
+  z-index: 2000;
+  position: relative;
+  transform: translate(0,0) scale(1);
+  transition: all 0.5s ease-in-out;
+  // transform: translate(0, 40px);
+  // width: 100%;
+}
 
-.intro {
-  &__text {
-    &--definition {
-      display: inline-block;
-      text-decoration: underline;
-      font-size: 1.6rem;
-    }
-  }
+.scroll {
+  background: center/cover url('images/Trimmed\ Scroll.png') no-repeat;
+  height: 3rem;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  transform: scale(1.2);
+
   &__link {
+    text-align: left;
+    margin-left: 5rem;
+    margin-right: 5rem;
+    color: $color-tertiary-text;
+    font-family: inherit;
+    font-size: 1.5rem;
+    padding: 0.2rem 0.7rem;
+    border: 1px solid $color-tertiary-dark;
+    border-radius: 3px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    outline: none;
+
     &:link,
     &:visited {
       color: $color-tertiary-text;
     }
+  }
 
+  &__text {
+    display: inline-block;
+    padding: 2rem;
+    background-color: beige;
+    font-family: 'Quattrocento', serif;
+    width: 100%;
+    margin: 0 auto;
+    text-align: left;
+    font-size: 1.7rem;
+
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+
+    // @include phone {
+    //   width: 80%;
+    // }
+    // @include laptop {
+    //   width: 60%;
+    // }
+
+    & ol {
+      margin-left: 2rem;
+    }
   }
 }
 
-button {
-  color: $color-tertiary-text;
-  background-color: $color-secondary;
-  font-family: inherit;
-  font-size: inherit;
-  padding: 0.2rem 0.7rem;
-  border: 1px solid $color-tertiary-dark;
-  border-radius: 3px;
-  cursor: pointer;
-
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+  visibility: hidden;
+  opacity: 0;
 }
+
+.overlay--show {
+  visibility: visible;
+  opacity: 1;
+}
+
+#scroll__close {
+  float: right;
+}
+
+.intro__convert {
+  // display: inline-block;
+}
+
+//~~~~~~~~~~~~~~~~~~~~~~ POP UP ~~~~~~~~~~~~~~~~~~~~~~
+.popup {
+  &__link {
+    margin-bottom: 1rem;
+  }
+
+  &__text {
+    text-align: left;
+    & ol {
+      list-style-position: inside;
+    }
+  }
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.1);
+  transition: all 0.5s;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.popup--show ~ .overlay {
+  visibility: visible;
+  opacity: 1;
+}
+
+.overlay--show {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+  z-index: 2000;
+  visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.popup--show {
+  visibility: visible;
+}
+
+.popup__content {
+  padding: 2rem;
+  background-color: beige;
+  font-family: 'Quattrocento', serif;
+  transform: scale(0.5);
+  opacity: 0;
+  transition: all 0.1s;
+  backface-visibility: hidden;
+}
+
+// .popup--show .popup__content {
+//   transform: scale(1);
+//   opacity: 1;
+//   transition: all 0.5s 0.3s;
+// }
+
+#popup__close {
+  float: right;
+}
+
 //~~~~~~~~~~~~~~~~~~~~~~ FORM SECTION ~~~~~~~~~~~~~~~~~~~~~~
 .section-generate {
   margin-bottom: $margin-section;
 }
 
-input[type=number]::-webkit-inner-spin-button, 
-input[type=number]::-webkit-outer-spin-button { 
-  -webkit-appearance: none; 
-  margin: 0; 
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 
 .paragraphs {
   margin-bottom: 1rem;
-  
+
   &__inputs {
     display: flex;
     align-items: center;
@@ -194,11 +381,10 @@ input[type=number]::-webkit-outer-spin-button {
   }
 
   &__paragraph {
-    font-family: "Quattrocento";
+    font-family: 'Quattrocento', serif;
     font-size: 1.6rem;
     &:not(:last-child) {
       margin-bottom: 1.5rem;
     }
   }
 }
-//~~~~~~~~~~~~~~~~~~~~~~ VARIABLES ~~~~~~~~~~~~~~~~~~~~~~

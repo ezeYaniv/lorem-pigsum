@@ -1,13 +1,27 @@
 <%- include ("./partials/header") -%>
-
       <div class="section-intro">
-        <p class="intro__text--definition">
-          <a href="" class="intro__link"><i class="fas fa-info-circle">&nbsp;</i>What is pig latin?</a>
-        </p>
-        <p class="intro__text--test">Test your pig latin!</p>
-        <form action="" method="post">
-          <button onclick="">Convert this page</button>
-        </form>
+        <div class="scroll-wrapper">
+          <div class="scroll">
+            <button class="scroll__link" id="scroll__link"><i class="fas fa-info-circle">&nbsp;</i>What is pig latin?</button>
+          </div>
+          <br>
+          <div class="scroll__text">
+            <span id="scroll__close">x</span>
+            <p>Pig latin is a language game, or argot, that lets you speak in secret code. <br>*Disclaimer: children will probably understand you. <br>The rules are simple:</p>
+            <ol>
+              <li>If a word starts with a consonant (or consonant cluster,) move the consonant(s) to the end of the word and add "ay." ("Latin" becomes "Atinlay.")</li>
+              <li>If a word starts with a vowel, keep it the same but add "yay" to the end of the word. ("Ipsum" becomes "Ipsumyay.")</li>
+            </ol>
+          </div>
+        </div>
+        <div class="overlay"></div>
+
+          <div class="intro__convert">
+            <p class="intro__text--test">Test your pig latin!</p>
+            <form action="" method="post">
+              <button onclick="" class="btn">Convert this page</button>
+            </form>
+        </div>
       </div>
       <div class="section-generate">
         <form action="/" method="post">
@@ -15,9 +29,9 @@
             <label for="paragraphs" class="paragraphs__description">Number of paragraphs:</label>
             <br>
             <div class="paragraphs__inputs">
-              <button type="button" class="paragraphs__button paragraphs__button--decrement" id="button--decrement">-</button>
+              <button type="button" class="btn paragraphs__button paragraphs__button--decrement" id="button--decrement" style="font-family: serif; font-weight: bold;">-</button>
               <input type="number" value="<%= paragraphs %>" min="1" max="99" class="paragraphs__number" id="paragraphs" name="paragraphs" required>
-              <button type="button" class="paragraphs__button paragraphs__button--increment" id="button--increment">+</button>
+              <button type="button" class="btn paragraphs__button paragraphs__button--increment" id="button--increment">+</button>
             </div>
           </div>
           <div class="options-length">
@@ -29,7 +43,7 @@
             <input class="radio-button" type="radio" value="long" name="length" id="length-long" <%= length == "long" ? "checked" : "" %> />
             <label class="radio-label" for="length-long">Long</label>
           </div>
-          <button class="generate-button" type="submit" onclick="generate()">Generate Pigsum</button>
+          <button class="btn generate-button" type="submit" onclick="generate()">Generate Pigsum</button> <!--the generate function isn't doing anything now-->
         </form>
       </div>
       <div class="section-results">
@@ -40,7 +54,21 @@
             <% }) %>
           <% } %>
         </div>
-        <button class="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
+        <button class="btn copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
       </div>
       
+      <!-- <div class="popup" id="popup">
+        <div class="popup__content">
+          <span id="popup__close">x</span>
+          <button class="popup__button" id="popup__button"><i class="fas fa-info-circle">&nbsp;</i>What is pig latin?</button>
+          <div class="popup__text">
+            <p>Pig latin is a language game, or argot, that lets you speak in secret code. <br>*Disclaimer: children will probably understand you. <br>The rules are simple:</p>
+            <ol>
+              <li>If a word starts with a consonant (or consonant cluster,) move the consonant(s) to the end of the word and add "ay." ("Latin" becomes "Atinlay.")</li>
+              <li>If a word starts with a vowel, keep it the same but add "yay" to the end of the word. ("Ipsum" becomes "Ipsumyay.")</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+      <div class="overlay" id="overlay"></div> -->
 <%- include("partials/footer") %>

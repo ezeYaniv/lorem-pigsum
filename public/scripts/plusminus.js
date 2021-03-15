@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).ready(() => {
     const minusButton = document.getElementById("button--decrement");
     const plusButton = document.getElementById("button--increment");
     const numberField = document.getElementById("paragraphs");
@@ -15,3 +15,4 @@ $(document).ready(function() {
       }
     });
   });
+  
