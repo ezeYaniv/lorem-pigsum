@@ -1,6 +1,6 @@
 # Lorem Pigsum 🐖🏛️🏺🗡️
 
-## The Pig Latin Lorem Ipsum generator
+### The Pig Latin Lorem Ipsum generator
 
 ## Introduction
 This app generates placeholder text for print and electronic typesetting, with a porcine twist: it's all Pig Latin! ([What is Pig Latin?](https://en.wikipedia.org/wiki/Pig_Latin)) Vale Lorem Ipsum, salve Lorem Pigsum.
@@ -39,7 +39,6 @@ Issues can be found in this repo's [Issues](https://github.com/ezeYaniv/kitchen-
 ---
 
 ## Screenshots
-![fluffy pancakes for 10!](https://github.com/ezeYaniv/kitchen-calc/blob/main/public/images/partial-screenshot1.png)
 
 ---
 
