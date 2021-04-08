@@ -8,7 +8,9 @@ This app generates placeholder text for print and electronic typesetting, with a
 ---
 
 ## Usage
-📜 Select from the text options available (# of paragraphs, paragraph length.) Generate your oremLay igsumPay and copy it to your clipboard with a click of a button!
+📜 Select from the text options available (# of paragraphs, paragraph length) 
+📜 Generate your oremLay igsumPay
+📜 Copy it to your clipboard with a click of a button!
 
 🐖 The final version of Lorem Pigsum can be accessed at https://lorem-pigsum.herokuapp.com/
 
